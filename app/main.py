@@ -7,9 +7,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional
 
-from models import LineOfBusiness, CarrierTier
-from extractor import extractor
-from database import db
+from app.models import LineOfBusiness, CarrierTier
+from app.extractor import extractor
+from app.database import dbfrom models import db
 
 app = FastAPI(title="Carrier Guideline AI")
 
@@ -143,4 +143,5 @@ async def match_carrier(req: MatchRequest):
 if __name__ == "__main__":
     import uvicorn
     port = int(os.getenv("PORT", 8000))
+
     uvicorn.run(app, host="0.0.0.0", port=port)
