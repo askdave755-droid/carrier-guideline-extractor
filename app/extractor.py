@@ -5,7 +5,7 @@ import pdfplumber
 import re
 import io
 from typing import Dict, List, Optional
-from models import ExtractionResult, FleetSize, DUIPolicy, VehicleRequirements, DriverRequirements, HazmatPolicy, LineOfBusiness, CarrierTier
+from app.models import ExtractionResult, FleetSize, DUIPolicy, VehicleRequirements, DriverRequirements, HazmatPolicy, LineOfBusiness, CarrierTier
 
 class GuidelineExtractor:
     def extract(self, pdf_bytes: bytes, carrier: str, states: List[str], lob, tier=None):
