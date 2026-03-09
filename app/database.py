@@ -10,7 +10,10 @@ from openai import AsyncOpenAI
 class Database:
     def __init__(self):
         self.pool = None
-        self.openai = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+                api_key = os.getenv("OPENAI_API_KEY")
+        if not api_key:
+            print("⚠️  WARNING: OPENAI_API_KEY not set!")
+        self.openai = AsyncOpenAI(api_key=api_key, http_client=None)
         
     async def connect(self):
         self.pool = await asyncpg.create_pool(
@@ -71,5 +74,6 @@ class Database:
                 LIMIT 1
             """, carrier, state)
             return json.loads(row['metadata']) if row else None
+
 
 db = Database()
