@@ -9,7 +9,7 @@ from typing import List, Optional
 
 from app.models import LineOfBusiness, CarrierTier
 from app.extractor import extractor
-from app.database import dbfrom models import db
+from app.database import db from models import db
 
 app = FastAPI(title="Carrier Guideline AI")
 
@@ -145,3 +145,4 @@ if __name__ == "__main__":
     port = int(os.getenv("PORT", 8000))
 
     uvicorn.run(app, host="0.0.0.0", port=port)
+
